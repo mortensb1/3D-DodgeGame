@@ -4,10 +4,15 @@ let boxPos = [0,0,1200];
 let x = 0;
 let speed = 20
 let tuch = false;
+let camSpeed = 3;
 
 let distance;
 
 let test = 0;
+
+let lives = 3;
+
+let timer = 101;
 
 function setup() {
   createCanvas(400, 400, WEBGL);
@@ -25,8 +30,11 @@ function draw() {
 
   if(distance < 100)
   {
-    test = true;
+    lives--
+    boxPos[2] = -402
   }
+
+  console.log(lives);
 
 }
 
@@ -49,20 +57,20 @@ function Movement()
 {
   if(keyIsDown(39))       //rArrow
   {
-    camPos[0] -= 2;
+    camPos[0] -= camSpeed;
   }
   if(keyIsDown(37))       //lArrow
   {
-    camPos[0] += 2;
+    camPos[0] += camSpeed;
   }
   
   if(keyIsDown(38))       //UpArrow
   {
-    camPos[1] -= 2;
+    camPos[1] -= camSpeed;
   }
   if(keyIsDown(40))       //DownArrow
   {
-    camPos[1] += 2;
+    camPos[1] += camSpeed;
   }
 
   camera(camPos[0], camPos[1], camPos[2]-400, camView[0] + camPos[0], camView[1] + camPos[1], camView[2] + camPos[2], 0,1,0);
